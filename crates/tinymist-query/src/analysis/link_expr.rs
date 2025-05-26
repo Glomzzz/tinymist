@@ -129,6 +129,15 @@ impl LinkStrWorker {
                     "cbor" | "csv" | "image" | "read" | "json" | "yaml" | "xml" => {
                         self.analyze_reader(node, call, "path", true);
                     }
+                    "embed" | "parent" => {
+                        self.analyze_reader(node, call, "slug", true);
+                    }
+                    "cite" => {
+                        self.analyze_reader(node, call, "slug", false);
+                    }
+                    "img" => {
+                        self.analyze_reader(node, call, "path", true);
+                    }
                     _ => return None,
                 },
                 _ => return None,
